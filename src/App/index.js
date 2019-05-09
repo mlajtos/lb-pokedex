@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Filter from "../Filter";
 
 import "./style.scss";
+import PokemonDetail from "../PokemonDetail";
 
 export default () => {
     const [pokemons, setPokemons] = useState([]);
@@ -48,9 +49,7 @@ export default () => {
                 {
                     loading
                         ? "Loading..."
-                        : pokemonDetail
-                            ? <img src={pokemonDetail.sprites.front_default} />
-                            : null
+                        : <PokemonDetail data={pokemonDetail} />
                     
                 }
             </div>
