@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { HashRouter as Router, Route } from "react-router-dom";
 
 import Filter from "../Filter";
+import Detail from "../Detail";
+import ListItem from "../ListItem";
+import List from "../List";
 
 import "./style.scss";
-import PokemonDetail from "../PokemonDetail";
 
 export default () => {
     const [pokemons, setPokemons] = useState([]);
     const [filter, setFilter] = useState("");
-    const [pokemonDetailId, setPokemonDetailId] = useState("");
-    const [pokemonDetail, setPokemonDetail] = useState("");
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchPokemonList = async () => {
-            const result = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=964");
+            const result = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=807");
             const data = await result.json();
             setPokemons(data.results);
         };
@@ -22,55 +22,28 @@ export default () => {
         fetchPokemonList();
     }, []);
 
-    useEffect(() => {
-        const fetchPokemonDetail = async (pokemonName) => {
-            if (pokemonName) {
-                const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}/`);
-                const data = await result.json();
-                setPokemonDetail(data);
-                setLoading(false);
-            }
-        };
-
-        fetchPokemonDetail(pokemonDetailId);
-    }, [pokemonDetailId]);
-
-    const handleClick = (pokemon, e) => {
-        e.preventDefault();
-        setLoading(true);
-        setPokemonDetailId(pokemon);
-    };
-
     return (
-        <>
-            <Filter value={filter} setValue={setFilter} />
+        <Router>
+            <Filter
+                value={filter}
+                setValue={setFilter}
+            />
 
-            <div>
-                {
-                    loading
-                        ? "Loading..."
-                        : <PokemonDetail data={pokemonDetail} />
-                    
+            <Route
+                path="/:pokemonId"
+                component={
+                    (props) => <Detail pokemon={props.match.params.pokemonId} />
                 }
-            </div>
-                
-            <ol>
-                {
-                    pokemons
-                        .filter(
-                            (pokemon) => pokemon.name.includes(filter)
-                        )
-                        .map(
-                            (pokemon) => (
-                                <li key={pokemon.name}>
-                                    <a href={`/${pokemon.name}`} onClick={handleClick.bind(null, pokemon.name)}>
-                                        {pokemon.name}
-                                    </a>
-                                </li>
-                            )
-                        )
+            />
+
+            <List
+                data={
+                    pokemons.filter(
+                        (pokemon) => pokemon.name.includes(filter)
+                    )
                 }
-            </ol>
-        </>
+                Delegate={ListItem}
+            />
+        </Router>
     );
 };
