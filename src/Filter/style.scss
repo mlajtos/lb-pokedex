@@ -1,0 +1,53 @@
+.SearchBox {
+    padding: 0.5em;
+    display: flex;
+    position: relative;
+    font-size: 1em;
+    background-color: #d5d5d5;
+
+    img.SearchBox__SearchIcon {
+        position: absolute;
+        height: 1em;
+        width: 1em;
+        align-self: center;
+        left: 0.9em;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    input {
+        flex: 1;
+        border: none;
+        border-radius: 0.3em;
+        padding: 0.2em 1.3em 0.2em 1.7em;
+        outline: none;
+        box-shadow: 0 0 2px 0px #00000075;
+        background: rgba(255, 255, 255, 0.8);
+        transition: 0.1s all ease-in-out;
+        font-size: 1.1em;
+        font-weight: 100;
+
+        &::placeholder {
+            color: #bbb;
+            font-weight: 100;
+        }
+
+        &:focus {
+            box-shadow: 0 0 2px 1px #00a6e5;
+            background: white;
+
+            &::placeholder {
+                color: transparent;
+            }
+        }
+    }
+
+    img.SearchBox__ClearIcon {
+        position: absolute;
+        height: 1em;
+        width: 1em;
+        align-self: center;
+        right: 0.9em;
+        opacity: 0.5;
+    }
+}

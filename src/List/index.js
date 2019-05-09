@@ -3,7 +3,7 @@ import React from "react";
 import "./style.scss";
 
 export default ({ data, Delegate }) => (
-    <ol>
+    <ol className="List">
         {
             data
                 .map(

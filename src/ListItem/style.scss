@@ -1,7 +1,34 @@
-a {
-  text-transform: capitalize;
-}
-
 li {
     display: block;
+
+    &:nth-child(odd) {
+        background: #00000005;
+    }
+
+    &:focus-within {
+        position: sticky;
+        top: calc(-0.5em - 1px);
+        bottom: calc(-0.5em - 1px);
+    }
+
+    a {
+        display: block;
+        text-transform: capitalize;
+        text-decoration: none;
+        padding: 0.2em 0.5em;
+        color: black;
+        font-size: 1.1em;
+        font-weight: 100;
+        outline: none;
+
+        &:focus {
+            background: #7b7b7b;
+            color: white;
+        }
+
+        &:hover {
+            background: #bfbfbf;
+            color: white;
+        }
+    }
 }

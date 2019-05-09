@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import "./style.scss";
+
 export default ({ pokemon }) => {
     const [pokemonDetail, setPokemonDetail] = useState(null);
 
@@ -7,17 +9,17 @@ export default ({ pokemon }) => {
         const fetchPokemonDetail = async (pokemon) => {
             if (pokemon) {
                 const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`);
-                const data = await result.json();
-                setPokemonDetail(data);
+                const data = result.json();
+                return data;
             }
         };
 
-        fetchPokemonDetail(pokemon);
+        fetchPokemonDetail(pokemon).then(setPokemonDetail);
     }, [pokemon]);
 
     return (
         pokemonDetail
-            ? <img src={pokemonDetail.sprites.front_default} />
+            ? <img className="Image" src={pokemonDetail.sprites.front_default} />
             : null
     );
 };

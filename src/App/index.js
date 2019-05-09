@@ -6,6 +6,11 @@ import Detail from "../Detail";
 import ListItem from "../ListItem";
 import List from "../List";
 
+import NavigationPanel from "../NavigationPanel";
+import DetailPanel from "../DetailPanel";
+
+import { fetchPokemonList } from "../List/service";
+
 import "./style.scss";
 
 export default () => {
@@ -13,37 +18,39 @@ export default () => {
     const [filter, setFilter] = useState("");
 
     useEffect(() => {
-        const fetchPokemonList = async () => {
-            const result = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=807");
-            const data = await result.json();
-            setPokemons(data.results);
-        };
-
-        fetchPokemonList();
+        fetchPokemonList().then(setPokemons);
     }, []);
 
     return (
         <Router>
-            <Filter
-                value={filter}
-                setValue={setFilter}
-            />
+            <NavigationPanel>
+                <Filter
+                    value={filter}
+                    setValue={setFilter}
+                />
 
-            <Route
-                path="/:pokemonId"
-                component={
-                    (props) => <Detail pokemon={props.match.params.pokemonId} />
-                }
-            />
+                <List
+                    data={
+                        pokemons.filter(
+                            (pokemon) => pokemon.name.includes(filter)
+                        )
+                    }
+                    Delegate={ListItem}
+                />
 
-            <List
-                data={
-                    pokemons.filter(
-                        (pokemon) => pokemon.name.includes(filter)
-                    )
-                }
-                Delegate={ListItem}
-            />
+                <div className="StatusBar">
+                    2 Selected<br />876 Total
+                </div>
+            </NavigationPanel>
+
+            <DetailPanel>
+                <Route
+                    path="/:pokemonId"
+                    component={
+                        (props) => <Detail pokemon={props.match.params.pokemonId} />
+                    }
+                />
+            </DetailPanel>
         </Router>
     );
 };
