@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import Filter from "../Filter";
+
 import "./style.scss";
 
 export default () => {
@@ -40,8 +42,7 @@ export default () => {
 
     return (
         <>
-            <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)} />
-            <button onClick={(e) => setFilter("")}>Clear</button>
+            <Filter value={filter} setValue={setFilter} />
 
             <div>
                 {
