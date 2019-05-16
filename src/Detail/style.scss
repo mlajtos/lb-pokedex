@@ -1,11 +1,15 @@
 .Detail {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 1em;
     border: 1px solid #d0d0d0;
-    padding: 1em;
     box-shadow: 1px 1px 3px 0px #eaeaea;
     background: linear-gradient(135deg, #fbfbfb, #f1f1f1);
+    scroll-snap-align: start;
+    overflow: hidden;
+    position: relative;
 }
 
 div.Detail_name {
@@ -30,11 +34,35 @@ div.Detail_stats {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: flex-end;
+    align-self: stretch;
     flex: 1;
     font-size: 0.8em;
+    padding: 1em;
 }
 
 span.Detail_unit {
     opacity: 0.5;
     margin-left: 0.05em;
+}
+
+button.Detail_removeButton {
+    border: none;
+    background-color: #e8e8e8;
+    color: #656565;
+    font-variant: small-caps;
+    padding: 0.2em;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    right: 0.5em;
+    top: 0.5em;
+    background: transparent;
+
+    &:hover {
+        background: #e53935;
+        color: white;
+    }
 }

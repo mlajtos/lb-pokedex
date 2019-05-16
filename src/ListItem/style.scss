@@ -1,5 +1,6 @@
 li.ListItem {
     display: block;
+    scroll-snap-align: start;
 
     &:nth-child(odd) {
         background: #00000005;
@@ -14,6 +15,7 @@ li.ListItem {
         font-size: 1.1em;
         font-weight: 100;
         outline: none;
+        cursor: pointer;
 
         // &:hover {
         //     background: #bfbfbf;
@@ -27,8 +29,8 @@ li.ListItem {
     }
 }
 
-li.ListItem__selected {
-        position: sticky;
-        top: calc(-0.5em - 1px);
-        bottom: calc(-0.5em - 1px);
-}
+// li.ListItem__selected {
+//         position: sticky;
+//         top: calc(-0.5em - 1px);
+//         bottom: calc(-0.5em - 1px);
+// }

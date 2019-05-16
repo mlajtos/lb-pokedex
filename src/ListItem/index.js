@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import "./style.scss";
 
-export default ({ pokemon, selected }) => (
+export default ({ pokemon, selected, onSelect }) => (
     <li className={"ListItem " + (selected ? "ListItem__selected" : "")}>
-        <Link to={`/${pokemon}`} className={"ListItem_link " + (selected ? "ListItem_link__selected" : "")}>
+        <a className={"ListItem_link " + (selected ? "ListItem_link__selected" : "")} onClick={e => onSelect(pokemon)}>
             {pokemon}
-        </Link>
+        </a>
     </li>
 );

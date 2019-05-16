@@ -1,0 +1,22 @@
+svg.Pokeball {
+    width: 10em;
+    height: 10em;
+}
+
+path.Pokeball_path {
+    opacity: 0.2;
+    fill: #000000;
+    fill-opacity: 1;
+    stroke: none;
+    animation: spin 1s infinite;
+    transform-origin: center center;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

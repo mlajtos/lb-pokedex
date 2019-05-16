@@ -1,7 +1,17 @@
 div.Grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, 15em);
+    grid-template-rows: max-content;
+    grid-auto-rows: max-content;
     grid-gap: 1em;
     padding: 1em;
     flex: 1;
+    justify-content: center;
+
+    &:after {
+        content: "";
+        display: block;
+        grid-column-start: 1;
+        height: 1em;
+    }
 }

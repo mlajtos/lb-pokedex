@@ -1,87 +1,87 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
-
-import Filter from "../Filter";
-import Detail from "../Detail";
-import ListItem from "../ListItem";
-import List from "../List";
-import Statusbar from "../Statusbar";
-import Grid from "../Grid";
+import React, { useState, useEffect, useCallback } from "react";
+import { withRouter } from "react-router-dom";
 
 import NavigationPanel from "../NavigationPanel";
+import Filter from "../Filter";
+import List from "../List";
+import ListItem from "../ListItem";
+import Statusbar from "../Statusbar";
 import DetailPanel from "../DetailPanel";
+import Detail from "../Detail";
+import Grid from "../Grid";
 
 import { fetchPokemonList } from "../List/service";
 
 import "./style.scss";
 
-export default () => {
+export default withRouter((props) => {
     const [pokemons, setPokemons] = useState([]);
+    const [selected, setSelected] = useState(props.selected);
     const [filter, setFilter] = useState("");
 
     useEffect(() => {
         fetchPokemonList().then(setPokemons);
     }, []);
 
+    useEffect(() => {
+        props.history.push(`/${selected.join("+")}`);
+    }, [selected]);
+
+    const selectItem = useCallback(
+        (item) => (
+            selected.includes(item)
+                ? setSelected(selected.filter(i => i !== item))
+                : setSelected(selected.concat(item))
+        )
+    );
+
+    const removeItem = useCallback(
+        (item) => (
+            setSelected(selected.filter(i => i !== item))
+        ),
+        [selected]
+    );
+
     return (
-        <Router>
+        <>
             <NavigationPanel>
                 <Filter
                     value={filter}
                     setValue={setFilter}
                 />
 
-                <Route
-                    path="/p/:ids"
-                    component={
-                        (props) => (
-                            <div>
-                                {props.match.params.ids.split("+").join(", ")}
-                            </div>
+                <List
+                    data={
+                        pokemons.filter(
+                            (pokemon) => pokemon.name.includes(filter)
                         )
                     }
-                />
-
-                <Route
-                    path="/:pokemonId"
-                    component={
-                        (props) => (
-                            <List
-                                data={
-                                    pokemons.filter(
-                                        (pokemon) => pokemon.name.includes(filter)
-                                    )
-                                }
-                                Delegate={ListItem}
-                                selected={props.match.params.pokemonId}
-                            />
-                        )
-                    }
+                    ItemComponent={ListItem}
+                    selected={selected}
+                    onSelectItem={selectItem}
                 />
 
                 <Statusbar
-                    selectedCount={0}
+                    selectedCount={selected.length}
                     totalCount={pokemons.length}
                 />
             </NavigationPanel>
 
             <DetailPanel>
-                {/* <Route
-                    path="/:pokemonId"
-                    component={
-                        (props) => <Detail pokemon={props.match.params.pokemonId} />
-                    }
-                /> */}
-
                 <Grid>
                     {
-                        // ["pikachu", "pichu", "bulbasaur"].map(
-                        pokemons.map(
-                            (pokemon) => <Detail pokemon={pokemon.name} />
+                        selected.map(
+                            (pokemon) => (
+                                <Detail
+                                    key={pokemon}
+                                    pokemon={pokemon}
+                                    removeItem={removeItem}
+                                />
+                            )
                         )
                     }
                 </Grid>
             </DetailPanel>
-        </Router>
+        </>
     );
-};
+});

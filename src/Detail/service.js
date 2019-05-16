@@ -1,8 +1,16 @@
 export const fetchPokemonDetail = async (pokemon) => {
     if (pokemon) {
-        const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`);
-        const data = result.json();
-        return data;
+        try {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`);
+            if (response.status === 200) {
+                const data = response.json();
+                return data;
+            } else {
+                return null;
+            }
+        } catch (e) {
+            return null;
+        }
     }
 };
 
