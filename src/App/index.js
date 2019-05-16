@@ -5,6 +5,8 @@ import Filter from "../Filter";
 import Detail from "../Detail";
 import ListItem from "../ListItem";
 import List from "../List";
+import Statusbar from "../Statusbar";
+import Grid from "../Grid";
 
 import NavigationPanel from "../NavigationPanel";
 import DetailPanel from "../DetailPanel";
@@ -29,27 +31,56 @@ export default () => {
                     setValue={setFilter}
                 />
 
-                <List
-                    data={
-                        pokemons.filter(
-                            (pokemon) => pokemon.name.includes(filter)
+                <Route
+                    path="/p/:ids"
+                    component={
+                        (props) => (
+                            <div>
+                                {props.match.params.ids.split("+").join(", ")}
+                            </div>
                         )
                     }
-                    Delegate={ListItem}
                 />
 
-                <div className="StatusBar">
-                    2 Selected<br />876 Total
-                </div>
+                <Route
+                    path="/:pokemonId"
+                    component={
+                        (props) => (
+                            <List
+                                data={
+                                    pokemons.filter(
+                                        (pokemon) => pokemon.name.includes(filter)
+                                    )
+                                }
+                                Delegate={ListItem}
+                                selected={props.match.params.pokemonId}
+                            />
+                        )
+                    }
+                />
+
+                <Statusbar
+                    selectedCount={0}
+                    totalCount={pokemons.length}
+                />
             </NavigationPanel>
 
             <DetailPanel>
-                <Route
+                {/* <Route
                     path="/:pokemonId"
                     component={
                         (props) => <Detail pokemon={props.match.params.pokemonId} />
                     }
-                />
+                /> */}
+
+                <Grid>
+                    {
+                        // ["pikachu", "pichu", "bulbasaur"].map(
+                        pokemons.map(
+                            (pokemon) => <Detail pokemon={pokemon.name} />
+                        )
+                    }
+                </Grid>
             </DetailPanel>
         </Router>
     );

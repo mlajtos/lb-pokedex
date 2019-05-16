@@ -1,17 +1,11 @@
-li {
+li.ListItem {
     display: block;
 
     &:nth-child(odd) {
         background: #00000005;
     }
 
-    &:focus-within {
-        position: sticky;
-        top: calc(-0.5em - 1px);
-        bottom: calc(-0.5em - 1px);
-    }
-
-    a {
+    a.ListItem_link {
         display: block;
         text-transform: capitalize;
         text-decoration: none;
@@ -21,14 +15,20 @@ li {
         font-weight: 100;
         outline: none;
 
-        &:focus {
-            background: #7b7b7b;
-            color: white;
-        }
-
-        &:hover {
-            background: #bfbfbf;
-            color: white;
-        }
+        // &:hover {
+        //     background: #bfbfbf;
+        //     color: white;
+        // }
     }
+
+    a.ListItem_link__selected {
+        background: #2196f3;
+        color: white;
+    }
+}
+
+li.ListItem__selected {
+        position: sticky;
+        top: calc(-0.5em - 1px);
+        bottom: calc(-0.5em - 1px);
 }

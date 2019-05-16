@@ -1,11 +1,13 @@
-.SearchBox {
+.Filter {
     padding: 0.5em;
     display: flex;
     position: relative;
     font-size: 1em;
     background-color: #d5d5d5;
+    box-shadow: 0px 0px 3px 1px #00000060;
+    z-index: 1;
 
-    img.SearchBox__SearchIcon {
+    img.Filter_searchIcon {
         position: absolute;
         height: 1em;
         width: 1em;
@@ -15,7 +17,7 @@
         opacity: 0.5;
     }
 
-    input {
+    input.Filter_input {
         flex: 1;
         border: none;
         border-radius: 0.3em;
@@ -28,12 +30,12 @@
         font-weight: 100;
 
         &::placeholder {
-            color: #bbb;
+            color: #d5d5d5;
             font-weight: 100;
         }
 
         &:focus {
-            box-shadow: 0 0 2px 1px #00a6e5;
+            box-shadow: 0 0 1px 2px #2196f3;
             background: white;
 
             &::placeholder {
@@ -42,7 +44,7 @@
         }
     }
 
-    img.SearchBox__ClearIcon {
+    img.Filter_clearIcon {
         position: absolute;
         height: 1em;
         width: 1em;

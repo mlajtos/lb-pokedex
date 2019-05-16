@@ -1,6 +1,6 @@
 .DetailPanel {
     flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: scroll;
+    will-change: scroll-position;
 }

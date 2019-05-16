@@ -1,4 +1,40 @@
-img.Image {
+.Detail {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1em;
+    border: 1px solid #d0d0d0;
+    padding: 1em;
+    box-shadow: 1px 1px 3px 0px #eaeaea;
+    background: linear-gradient(135deg, #fbfbfb, #f1f1f1);
+}
+
+div.Detail_name {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 2em;
+    font-weight: bolder;
+    opacity: 0.8;
+}
+
+img.Detail_image {
     image-rendering: pixelated;
-    transform: scale(5);
+    flex: none;
+    object-fit: contain;
+    height: 15em;
+    width: 15em;
+    align-self: center;
+}
+
+div.Detail_stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    flex: 1;
+    font-size: 0.8em;
+}
+
+span.Detail_unit {
+    opacity: 0.5;
+    margin-left: 0.05em;
 }
