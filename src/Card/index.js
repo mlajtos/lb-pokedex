@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import "./style.scss";
 
@@ -15,29 +15,48 @@ export default ({ children }) => {
     const [pos, setPos] = useState({ x: 0, y: 0 });
     const [transitionTime, setTransitionTime] = useState(100);
 
-    const maxDelta = 0.07;
+    const maxRotation = 0.07;
+    const maxScale = 1.02;
+    const enterTransitionTime = 100;
+    const leaveTransitionTime = 250;
+    const perspective = "600px";
+
+    const onMouseEnter = useCallback(
+        (e) => {
+            setPos(getPos(e));
+            setTimeout(() => {
+                setTransitionTime(0);
+            }, transitionTime);
+        },
+        []
+    );
+
+    const onMouseMove = useCallback(
+        (e) => {
+            if (!transitionTime) {
+                setPos(getPos(e));
+            }
+        },
+        [transitionTime]
+    );
+
+    const onMouseLeave = useCallback(
+        (e) => {
+            setTransitionTime(leaveTransitionTime);
+            setTimeout(() => {
+                setTransitionTime(enterTransitionTime);
+            });
+            setPos({ x: 0, y: 0 });
+        },
+        []
+    );
 
     return (
         <div
             className="Card"
-            onMouseEnter={(e) => {
-                setPos(getPos(e));
-                setTimeout(() => {
-                    setTransitionTime(0);
-                }, transitionTime);
-            }}
-            onMouseMove={(e) => {
-                if (!transitionTime) {
-                    setPos(getPos(e));
-                }
-            }}
-            onMouseLeave={(e) => {
-                setTransitionTime(250);
-                setTimeout(() => {
-                    setTransitionTime(100);
-                });
-                setPos({ x: 0, y: 0 });
-            }}
+            onMouseEnter={onMouseEnter}
+            onMouseMove={onMouseMove}
+            onMouseLeave={onMouseLeave}
         >
             <div
                 className="Card_wrapper"
@@ -45,10 +64,10 @@ export default ({ children }) => {
                     transformStyle: "preserve-3d",
                     transformOrigin: "center center",
                     transform: `
-                        perspective(500px)
-                        ${pos.x ? "scale(1.02)" : ""}
-                        rotateY(${-maxDelta * pos.x}deg)
-                        rotateX(${maxDelta * pos.y}deg)
+                        perspective(${perspective})
+                        ${pos.x ? `scale(${maxScale})` : ""}
+                        rotateY(${-maxRotation * pos.x}deg)
+                        rotateX(${maxRotation * pos.y}deg)
                     `,
                     transition: (
                         transitionTime
