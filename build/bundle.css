@@ -197,6 +197,14 @@ div.Grid {
     grid-column-start: 1;
     height: 1em; }
 
+.EmptySelection {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  opacity: 0.3; }
+
 html, body {
   margin: 0;
   padding: 0;
