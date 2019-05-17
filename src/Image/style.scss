@@ -1,0 +1,12 @@
+div.Image {
+    position: relative;
+
+    div.Image_overlay {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+}

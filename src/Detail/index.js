@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, memo } from "react";
 
 import Pokeball from "../Pokeball";
 import Card from "../Card";
+import Image from "../Image";
 
 import "./style.scss";
 import { fetchPokemonDetail } from "./service";
@@ -36,7 +37,7 @@ export default memo(({ pokemon, onRemove, onSelect, active }) => {
                 onClick={onSelect.bind(null, pokemonDetail.name)}
 
             >
-                <img
+                <Image
                     className="Detail_image"
                     src={pokemonDetail.sprites.front_default}
                 />
