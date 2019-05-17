@@ -13,7 +13,3 @@ export const fetchPokemonDetail = async (pokemon) => {
         }
     }
 };
-
-import mockData from "./mockData.json";
-
-export const fetchPokemonDetail2 = async (pokemon) => mockData;

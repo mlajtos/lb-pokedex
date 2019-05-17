@@ -3,7 +3,3 @@ export const fetchPokemonList = async () => {
     const data = await result.json();
     return data.results;
 };
-
-import mockData from "./mockData.json";
-
-export const fetchPokemonList2 = async () => mockData.results;
