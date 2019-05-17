@@ -9,6 +9,7 @@ import Statusbar from "../Statusbar";
 import DetailPanel from "../DetailPanel";
 import Detail from "../Detail";
 import Grid from "../Grid";
+import EmptySelection from "../EmptySelection";
 
 import { fetchPokemonList } from "../List/service";
 
@@ -73,21 +74,27 @@ export default withRouter((props) => {
             </NavigationPanel>
 
             <DetailPanel>
-                <Grid>
-                    {
-                        selected.map(
-                            (pokemon) => (
-                                <Detail
-                                    key={pokemon}
-                                    pokemon={pokemon}
-                                    onRemove={removeItem}
-                                    onSelect={selectReference}
-                                    active={reference === pokemon}
-                                />
-                            )
+                {
+                    selected.length === 0
+                        ? <EmptySelection />
+                        : (
+                            <Grid>
+                                {
+                                    selected.map(
+                                        (pokemon) => (
+                                            <Detail
+                                                key={pokemon}
+                                                pokemon={pokemon}
+                                                onRemove={removeItem}
+                                                onSelect={selectReference}
+                                                active={reference === pokemon}
+                                            />
+                                        )
+                                    )
+                                }
+                            </Grid>
                         )
-                    }
-                </Grid>
+                }
             </DetailPanel>
         </>
     );
