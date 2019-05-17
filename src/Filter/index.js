@@ -10,7 +10,7 @@ export default ({ value, setValue }) => (
         <input
             type="text"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value.toLocaleLowerCase())}
             placeholder="Search..."
             className="Filter_input"
         />
