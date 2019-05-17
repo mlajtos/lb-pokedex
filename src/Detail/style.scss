@@ -11,6 +11,7 @@
     overflow: hidden;
     position: relative;
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .Detail__active {
@@ -24,6 +25,9 @@ div.Detail_name {
     font-size: 2em;
     font-weight: bolder;
     opacity: 0.8;
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
 }
 
 img.Detail_image {
@@ -42,7 +46,6 @@ div.Detail_stats {
     justify-content: space-evenly;
     align-items: flex-end;
     align-self: stretch;
-    flex: 1;
     font-size: 0.8em;
     padding: 1em;
 }

@@ -16,7 +16,7 @@ export default ({ children }) => {
     const [transitionTime, setTransitionTime] = useState(100);
 
     const maxRotation = 0.07;
-    const maxScale = 1.02;
+    const maxScale = 1.05;
     const enterTransitionTime = 100;
     const leaveTransitionTime = 250;
     const perspective = "600px";
@@ -61,18 +61,23 @@ export default ({ children }) => {
             <div
                 className="Card_wrapper"
                 style={{
+                    willChange: "transform",
                     transformStyle: "preserve-3d",
                     transformOrigin: "center center",
                     transform: `
                         perspective(${perspective})
-                        ${pos.x ? `scale(${maxScale})` : ""}
                         rotateY(${-maxRotation * pos.x}deg)
                         rotateX(${maxRotation * pos.y}deg)
+                        ${
+                            (pos.x || pos.y)
+                                ? `scale3d(${maxScale}, ${maxScale}, ${maxScale})`
+                                : ""
+                        }
                     `,
                     transition: (
                         transitionTime
                             ? `transform ${transitionTime}ms ease-in-out`
-                            : "none"
+                            : ""
                     )
                 }}
             >
