@@ -6,6 +6,13 @@ li.ListItem {
         background: #00000005;
     }
 
+    // &.ListItem__selected {
+    //     background: #bfbfbf;
+    //     position: sticky;
+    //     top: calc(-0.5em - 1px);
+    //     bottom: calc(-0.5em - 1px);
+    // }
+
     a.ListItem_link {
         display: block;
         text-transform: capitalize;
@@ -13,24 +20,17 @@ li.ListItem {
         padding: 0.2em 0.5em;
         color: black;
         font-size: 1.1em;
-        font-weight: 100;
         outline: none;
         cursor: pointer;
 
-        // &:hover {
-        //     background: #bfbfbf;
-        //     color: white;
-        // }
-    }
+        input.ListItem_checkbox {
+            height: 1.3em;
+            margin-right: 1.3em;
+        }
 
-    a.ListItem_link__selected {
-        background: #2196f3;
-        color: white;
+        &:hover {
+            background: #2196f3;
+            color: white;
+        }
     }
 }
-
-// li.ListItem__selected {
-//         position: sticky;
-//         top: calc(-0.5em - 1px);
-//         bottom: calc(-0.5em - 1px);
-// }

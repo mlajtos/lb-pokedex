@@ -10,6 +10,12 @@
     scroll-snap-align: start;
     overflow: hidden;
     position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+.Detail__active {
+    box-shadow: 0 0 4px 2px #2196f3;
+    border-color: transparent;
 }
 
 div.Detail_name {
@@ -22,6 +28,7 @@ div.Detail_name {
 
 img.Detail_image {
     image-rendering: pixelated;
+    image-rendering: crisp-edges;
     flex: none;
     object-fit: contain;
     height: 15em;
@@ -49,7 +56,6 @@ button.Detail_removeButton {
     border: none;
     background-color: #e8e8e8;
     color: #656565;
-    font-variant: small-caps;
     padding: 0.2em;
     outline: none;
     border-radius: 50%;

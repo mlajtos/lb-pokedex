@@ -3,6 +3,6 @@
     display: flex;
     overflow: scroll;
     will-change: scroll-position;
-    scroll-snap-type: y mandatory;
+    // scroll-snap-type: y mandatory;
     scroll-padding: 1em;
 }

@@ -18,6 +18,7 @@ export default withRouter((props) => {
     const [pokemons, setPokemons] = useState([]);
     const [selected, setSelected] = useState(props.selected);
     const [filter, setFilter] = useState("");
+    const [reference, setReference] = useState("");
 
     useEffect(() => {
         fetchPokemonList().then(setPokemons);
@@ -40,6 +41,10 @@ export default withRouter((props) => {
             setSelected(selected.filter(i => i !== item))
         ),
         [selected]
+    );
+
+    const selectReference = useCallback(
+        (item) => setReference(item)
     );
 
     return (
@@ -75,7 +80,9 @@ export default withRouter((props) => {
                                 <Detail
                                     key={pokemon}
                                     pokemon={pokemon}
-                                    removeItem={removeItem}
+                                    onRemove={removeItem}
+                                    onSelect={selectReference}
+                                    active={reference === pokemon}
                                 />
                             )
                         )

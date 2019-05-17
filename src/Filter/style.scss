@@ -27,11 +27,9 @@
         background: rgba(255, 255, 255, 0.8);
         transition: 0.1s all ease-in-out;
         font-size: 1.1em;
-        font-weight: 100;
 
         &::placeholder {
             color: #d5d5d5;
-            font-weight: 100;
         }
 
         &:focus {

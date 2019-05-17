@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef, memo } from "react";
 
 import Pokeball from "../Pokeball";
+import Card from "../Card";
 
 import "./style.scss";
 import { fetchPokemonDetail } from "./service";
 
-export default memo(({ pokemon, removeItem }) => {
+export default memo(({ pokemon, onRemove, onSelect, active }) => {
     const [pokemonDetail, setPokemonDetail] = useState(null);
 
     useEffect(() => {
@@ -28,30 +29,37 @@ export default memo(({ pokemon, removeItem }) => {
     }
 
     return (
-        <div ref={el} className="Detail">
-            <img
-                className="Detail_image"
-                src={pokemonDetail.sprites.front_default}
-            />
-            <div className="Detail_name">
-                {pokemonDetail.name}
-            </div>
-            <div className="Detail_stats">
-                <div className="Detail_stat">
-                    {pokemonDetail.height / 10}
-                    <span className="Detail_unit">m</span>
-                </div>
-                <div className="Detail_stat">
-                    {pokemonDetail.weight / 10}
-                    <span className="Detail_unit">kg</span>
-                </div>
-            </div>
-            <button
-                className="Detail_removeButton"
-                onClick={removeItem.bind(null, pokemonDetail.name)}
+        <Card>
+            <div
+                ref={el}
+                className={`Detail ${active ? "Detail__active" : ""}`}
+                onClick={onSelect.bind(null, pokemonDetail.name)}
+
             >
-                ✕
+                <img
+                    className="Detail_image"
+                    src={pokemonDetail.sprites.front_default}
+                />
+                <div className="Detail_name">
+                    {pokemonDetail.name}
+                </div>
+                <div className="Detail_stats">
+                    <div className="Detail_stat">
+                        {pokemonDetail.height / 10}
+                        <span className="Detail_unit">m</span>
+                    </div>
+                    <div className="Detail_stat">
+                        {pokemonDetail.weight / 10}
+                        <span className="Detail_unit">kg</span>
+                    </div>
+                </div>
+                <button
+                    className="Detail_removeButton"
+                    onClick={onRemove.bind(null, pokemonDetail.name)}
+                >
+                    ✕
             </button>
-        </div>
+            </div>
+        </Card>
     );
 });
