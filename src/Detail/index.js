@@ -3,11 +3,12 @@ import React, { useEffect, useState, useRef, memo } from "react";
 import Pokeball from "../Pokeball";
 import Tilt from "../Tilt";
 import Image from "../Image";
+import Stats from "../Stats";
 
 import "./style.scss";
 import { fetchPokemonDetail } from "./service";
 
-export default memo(({ pokemon, onRemove, onSelect, active }) => {
+export default memo(({ pokemon, onRemove, onSelect, active, reference }) => {
     const [pokemonDetail, setPokemonDetail] = useState(null);
 
     useEffect(() => {
@@ -34,7 +35,7 @@ export default memo(({ pokemon, onRemove, onSelect, active }) => {
             <div
                 ref={el}
                 className={`Detail ${active ? "Detail__active" : ""}`}
-                onClick={onSelect.bind(null, pokemonDetail.name)}
+                onClick={onSelect.bind(null, pokemonDetail.name, pokemonDetail)}
 
             >
                 <Image
@@ -44,22 +45,18 @@ export default memo(({ pokemon, onRemove, onSelect, active }) => {
                 <div className="Detail_name">
                     {pokemonDetail.name}
                 </div>
-                <div className="Detail_stats">
-                    <div className="Detail_stat">
-                        {pokemonDetail.height / 10}
-                        <span className="Detail_unit">m</span>
-                    </div>
-                    <div className="Detail_stat">
-                        {pokemonDetail.weight / 10}
-                        <span className="Detail_unit">kg</span>
-                    </div>
-                </div>
+
+                <Stats
+                    data={pokemonDetail}
+                    reference={reference}
+                />
+
                 <button
                     className="Detail_removeButton"
                     onClick={onRemove.bind(null, pokemonDetail.name)}
                 >
                     ✕
-            </button>
+                </button>
             </div>
         </Tilt>
     );

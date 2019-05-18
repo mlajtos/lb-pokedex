@@ -1,0 +1,81 @@
+div.Stats {
+    align-self: stretch;
+
+    div.Stats_versus {
+        text-align: center;
+        opacity: 0.8;
+        height: 1em;
+
+        span.Stats_versusAcronym {
+            font-size: 0.8em;
+            opacity: 0.5;
+            margin-right: 0.5em;
+        }
+
+        span.Stats_versusName {
+            text-transform: capitalize;
+            font-weight: bolder;
+        }
+    }
+
+    div.Stats_entries {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        font-size: 0.8em;
+        padding: 1em;
+
+        div.Stats_entry {
+            text-align: center;
+
+            div.Stats_entryLabel {
+                font-size: 0.9em;
+                font-variant: all-small-caps;
+                letter-spacing: -0.05em;
+                opacity: 0.8;
+                border-top: 1px solid #ccc;
+            }
+
+            span.Stats_entryRelative ~ span.Stats_entryAbsolute {
+                display: none;
+            }
+    
+            &:hover {
+                span.Stats_entryAbsolute {
+                    display: inline !important;
+                }
+    
+                span.Stats_entryRelative {
+                    display: none;
+                }
+            }
+
+            span.Stats_entryRelative__positive {
+                color: #4caf50;
+                &::before {
+                    content: "+";
+                }
+            }
+            
+            span.Stats_entryRelative__negative {
+                color: #f44336;
+                &::before {
+                    content: "-";
+                }
+            }
+    
+            span.Stats_entryRelative__neutral {
+                color: "black";
+                &::before {
+                    content: "±";
+                }
+            }
+    
+            span.Stats_entryUnit {
+                opacity: 0.5;
+                margin-left: 0.05em;
+            }
+        }
+    }
+}

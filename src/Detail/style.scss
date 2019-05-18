@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex: 1;
     border-radius: 1em;
     border: 1px solid #d0d0d0;
     box-shadow: 1px 1px 3px 0px #eaeaea;
@@ -35,24 +36,9 @@ img.Detail_image {
     image-rendering: crisp-edges;
     flex: none;
     object-fit: contain;
-    height: 15em;
-    width: 15em;
+    height: 13em;
+    width: 13em;
     align-self: center;
-}
-
-div.Detail_stats {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-end;
-    align-self: stretch;
-    font-size: 0.8em;
-    padding: 1em;
-}
-
-span.Detail_unit {
-    opacity: 0.5;
-    margin-left: 0.05em;
 }
 
 button.Detail_removeButton {
@@ -69,6 +55,7 @@ button.Detail_removeButton {
     right: 0.5em;
     top: 0.5em;
     background: transparent;
+    z-index: 100;
 
     &:hover {
         background: #e53935;
