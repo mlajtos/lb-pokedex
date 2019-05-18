@@ -20,6 +20,7 @@ export default ({ children }) => {
     const enterTransitionTime = 100;
     const leaveTransitionTime = 250;
     const perspective = "600px";
+    const easingCurve = "ease-in-out";
 
     const onMouseEnter = useCallback(
         (e) => {
@@ -51,32 +52,31 @@ export default ({ children }) => {
         []
     );
 
+    const hovering = (pos.x || pos.y);
+
     return (
         <div
-            className="Card"
+            className="Tilt"
             onMouseEnter={onMouseEnter}
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
         >
             <div
-                className="Card_wrapper"
+                className="Tilt_wrapper"
                 style={{
-                    willChange: "transform",
-                    transformStyle: "preserve-3d",
-                    transformOrigin: "center center",
                     transform: `
                         perspective(${perspective})
                         rotateY(${-maxRotation * pos.x}deg)
                         rotateX(${maxRotation * pos.y}deg)
                         ${
-                            (pos.x || pos.y)
+                            hovering
                                 ? `scale3d(${maxScale}, ${maxScale}, ${maxScale})`
                                 : ""
                         }
                     `,
                     transition: (
                         transitionTime
-                            ? `transform ${transitionTime}ms ease-in-out`
+                            ? `transform ${transitionTime}ms ${easingCurve}`
                             : ""
                     )
                 }}

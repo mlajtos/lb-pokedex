@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, memo } from "react";
 
 import Pokeball from "../Pokeball";
-import Card from "../Card";
+import Tilt from "../Tilt";
 import Image from "../Image";
 
 import "./style.scss";
@@ -30,7 +30,7 @@ export default memo(({ pokemon, onRemove, onSelect, active }) => {
     }
 
     return (
-        <Card>
+        <Tilt>
             <div
                 ref={el}
                 className={`Detail ${active ? "Detail__active" : ""}`}
@@ -61,6 +61,6 @@ export default memo(({ pokemon, onRemove, onSelect, active }) => {
                     ✕
             </button>
             </div>
-        </Card>
+        </Tilt>
     );
 });

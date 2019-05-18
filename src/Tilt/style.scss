@@ -1,0 +1,12 @@
+div.Tilt {
+    display: flex;
+
+    div.Tilt_wrapper {
+        display: flex;
+        flex: 1;
+        will-change: transform;
+        transform-style: preserve-3d;
+        transform-origin: center center;
+        perspective-origin: center center;
+    }
+}
