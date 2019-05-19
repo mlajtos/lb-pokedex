@@ -53,7 +53,7 @@ export default memo(({ pokemon, onRemove, onSelect, active, reference }) => {
 
                 <button
                     className="Detail_removeButton"
-                    onClick={onRemove.bind(null, pokemonDetail.name)}
+                    onClick={(e) => { e.stopPropagation(); onRemove(pokemonDetail.name); }}
                 >
                     ✕
                 </button>

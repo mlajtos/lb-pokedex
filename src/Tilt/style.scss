@@ -9,4 +9,8 @@ div.Tilt {
         transform-origin: center center;
         perspective-origin: center center;
     }
+
+    &:hover {
+        z-index: 1;
+    }
 }

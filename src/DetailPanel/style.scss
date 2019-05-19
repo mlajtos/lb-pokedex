@@ -3,6 +3,7 @@
     display: flex;
     overflow: scroll;
     will-change: scroll-position;
+    padding: 1em;
     // scroll-snap-type: y mandatory;
     scroll-padding: 1em;
 }

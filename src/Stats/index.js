@@ -11,6 +11,17 @@ export default ({ data, reference }) => {
         <div className="Stats">
             <Versus>{reference ? reference.name : null}</Versus>
             <div className="Stats_entries">
+                {
+                    data.stats.map((entry, i) => (
+                        <Entry
+                            key={entry.stat.name}
+                            label={abbreviation(entry.stat.name)}
+                            value={entry.base_stat}
+                            referenceValue={reference ? reference.stats[i].base_stat : null}
+                            unit=""
+                        />
+                    ))
+                }
                 <Entry
                     label="Height"
                     value={data.height / 10}
@@ -27,6 +38,17 @@ export default ({ data, reference }) => {
         </div>
     );
 };
+
+const abbreviation = (label) => (
+    {
+        "speed": "spd",
+        "defense": "def",
+        "special-defense": "def-s",
+        "special-attack": "att-s",
+        "attack": "att",
+        "hp": "hp"
+    }[label]
+);
 
 const Entry = ({ label, value, referenceValue, unit }) => (
     <div className="Stats_entry">

@@ -39,10 +39,13 @@ export default withRouter((props) => {
     );
 
     const removeItem = useCallback(
-        (item) => (
-            setSelected(selected.filter(i => i !== item))
-        ),
-        [selected]
+        (item) => {
+            setSelected(selected.filter(i => i !== item));
+            if (reference === item) {
+                selectReference(reference);
+            }
+        },
+        [selected, reference]
     );
 
     const selectReference = useCallback(
@@ -54,7 +57,8 @@ export default withRouter((props) => {
                 setReference(name);
                 setReferenceData(data);
             }
-        }
+        },
+        [reference]
     );
 
     return (

@@ -5,19 +5,18 @@
     justify-content: center;
     flex: 1;
     border-radius: 1em;
-    border: 1px solid #d0d0d0;
-    box-shadow: 1px 1px 3px 0px #eaeaea;
+    box-shadow: 0 0 0px 1px #d0d0d0;
     background: linear-gradient(135deg, #fbfbfb, #f1f1f1);
     scroll-snap-align: start;
     overflow: hidden;
     position: relative;
-    transition: all 0.2s ease-in-out;
+    transition: box-shadow 0.1s ease-in-out;
     cursor: pointer;
 }
 
 .Detail__active {
-    box-shadow: 0 0 4px 2px #2196f3;
-    border-color: transparent;
+    box-shadow: 0 0 0px 1px #2196f3;
+    background: #dff0fc;
 }
 
 div.Detail_name {
@@ -29,6 +28,8 @@ div.Detail_name {
     display: flex;
     align-items: flex-end;
     flex: 1;
+    padding: 0 0.2em 0.1em;
+    line-height: 1em;
 }
 
 img.Detail_image {
@@ -50,10 +51,10 @@ button.Detail_removeButton {
     border-radius: 50%;
     cursor: pointer;
     position: absolute;
-    width: 2.5em;
-    height: 2.5em;
-    right: 0.5em;
-    top: 0.5em;
+    width: 3em;
+    height: 3em;
+    right: 0.7em;
+    top: 0.7em;
     background: transparent;
     z-index: 100;
 
