@@ -90,7 +90,10 @@ export default ({ children }) => {
                     `,
                     transition: (
                         transitionTime
-                            ? `transform ${transitionTime}ms ${easingCurve}`
+                            ? `
+                                transform ${transitionTime}ms ${easingCurve},
+                                filter ${transitionTime}ms ${easingCurve}
+                            `
                             : ""
                     )
                 }}
