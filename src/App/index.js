@@ -27,7 +27,7 @@ export default withRouter((props) => {
     }, []);
 
     useEffect(() => {
-        props.history.push(`/${selected.join("+")}`);
+        props.history.replace(`/${selected.join("+")}`);
     }, [selected]);
 
     const selectItem = useCallback(

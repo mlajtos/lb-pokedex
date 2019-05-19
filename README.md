@@ -15,7 +15,6 @@ Demo project for LB. [Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pi
 
 ### User-facing Bugs
 
-1. Native back/forward button does not work as it should.
 1. Tilt
     - Not really smooth transition from stationary to tilted.
     - After deleting a card, there is no tilting on the card that took its place.
