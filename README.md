@@ -43,3 +43,18 @@ Demo project for LB. [Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pi
     - Moar memo!
 1. `App.js` is getting bloated by `useState()`.
     - `useReducer()`
+1. BEM "bug"
+    - Using `Block_element__modifier` template:
+        - `Block` is PascalCase to match name of the React component
+        - `element` is camelCase and prefixed with one underscore
+        - `modifier` is camelCase and prefixed with two underscores
+    - Intentionally not using this SASS scoping:
+        ```sass
+        .Block {
+            &_element {
+                &__modifier {
+
+                }
+            }
+        }
+        ```
