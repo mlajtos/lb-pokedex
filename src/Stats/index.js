@@ -12,15 +12,18 @@ export default ({ data, reference }) => {
             <Versus>{reference ? reference.name : null}</Versus>
             <div className="Stats_entries">
                 {
-                    data.stats.map((entry, i) => (
-                        <Entry
-                            key={entry.stat.name}
-                            label={abbreviation(entry.stat.name)}
-                            value={entry.base_stat}
-                            referenceValue={reference ? reference.stats[i].base_stat : null}
-                            unit=""
-                        />
-                    ))
+                    data.stats
+                        .concat() // copy
+                        .sort(statsComparator)
+                        .map((entry, i) => (
+                            <Entry
+                                key={entry.stat.name}
+                                label={abbreviation(entry.stat.name)}
+                                value={entry.base_stat}
+                                referenceValue={reference ? reference.stats[i].base_stat : null}
+                                unit=""
+                            />
+                        ))
                 }
                 <Entry
                     label="Height"
@@ -39,13 +42,20 @@ export default ({ data, reference }) => {
     );
 };
 
+const statsOrder = ["attack", "defense", "special-attack", "special-defense", "speed", "hp"];
+const statsComparator = (a, b) => (
+    statsOrder.indexOf(a.stat.name) > statsOrder.indexOf(b.stat.name)
+        ? 1
+        : -1
+);
+
 const abbreviation = (label) => (
     {
-        "speed": "spd",
+        "attack": "atk",
         "defense": "def",
-        "special-defense": "def-s",
-        "special-attack": "att-s",
-        "attack": "att",
+        "special-attack": "sp-atk",
+        "special-defense": "sp-def",
+        "speed": "spd",
         "hp": "hp"
     }[label]
 );
