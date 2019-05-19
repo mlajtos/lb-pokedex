@@ -13,8 +13,6 @@ Demo project for LB. [Live demo](https://mlajtos.github.io/lb-pokedex/build)
         - `onMouseEnter` event is skipped (in Chrome, FF is fine).
     - Shadow is cut-off when animating to stationary position.
         - `zIndex` is changed back to zero way too early.
-1. No mobile support.
-    - Few strategically placed media queries could do a lot.
 1. No A11Y.
     - At least `aria` attributes would be nice.
 1. No way to clear selection with one action.

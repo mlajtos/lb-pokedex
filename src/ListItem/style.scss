@@ -34,3 +34,16 @@ li.ListItem {
         }
     }
 }
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    li.ListItem {
+    
+        a.ListItem_link {
+    
+            input.ListItem_checkbox {
+                display: none;
+            }
+        }
+    }
+}

@@ -7,3 +7,19 @@
     // scroll-snap-type: y mandatory;
     scroll-padding: 1em;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .DetailPanel {
+        display: none;
+    }
+
+    .DetailPanel__active {
+        display: flex;
+        position: fixed;
+        background: white;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        padding: 0;
+    }
+}

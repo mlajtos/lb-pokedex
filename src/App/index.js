@@ -86,7 +86,7 @@ export default withRouter((props) => {
                 />
             </NavigationPanel>
 
-            <DetailPanel>
+            <DetailPanel active={selected.length !== 0}>
                 {
                     selected.length === 0
                         ? <EmptySelection />
