@@ -35,7 +35,8 @@ export default withRouter((props) => {
             selected.includes(item)
                 ? setSelected(selected.filter(i => i !== item))
                 : setSelected(selected.concat(item))
-        )
+        ),
+        [selected]
     );
 
     const removeItem = useCallback(
