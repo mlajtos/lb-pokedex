@@ -4,4 +4,5 @@ ol.List {
     flex: 1;
     overflow-y: scroll;
     will-change: scroll-position;
+    -webkit-overflow-scrolling: touch;
 }
