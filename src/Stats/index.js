@@ -13,8 +13,6 @@ export default ({ data, reference }) => {
             <div className="Stats_entries">
                 {
                     data.stats
-                        .concat() // copy
-                        .sort(statsComparator)
                         .map((entry, i) => (
                             <Entry
                                 key={entry.stat.name}
@@ -41,13 +39,6 @@ export default ({ data, reference }) => {
         </div>
     );
 };
-
-const statsOrder = ["attack", "defense", "special-attack", "special-defense", "speed", "hp"];
-const statsComparator = (a, b) => (
-    statsOrder.indexOf(a.stat.name) > statsOrder.indexOf(b.stat.name)
-        ? 1
-        : -1
-);
 
 const abbreviation = (label) => (
     {
