@@ -74,7 +74,8 @@ export default ({ children }) => {
                                     ${pos.x * maxShadowDisplacement}px
                                     ${pos.y * maxShadowDisplacement}px
                                     ${shadowRadius}
-                                    ${shadowColor})
+                                    ${shadowColor}
+                                )
                             `
                             : ""
                     ),
