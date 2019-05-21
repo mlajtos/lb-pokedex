@@ -62,6 +62,11 @@ export default withRouter((props) => {
         [reference]
     );
 
+    const deselectReference = useCallback(
+        () => selectReference(reference),
+        [selectReference]
+    );
+
     return (
         <>
             <NavigationPanel>
@@ -87,7 +92,10 @@ export default withRouter((props) => {
                 />
             </NavigationPanel>
 
-            <DetailPanel active={selected.length !== 0}>
+            <DetailPanel
+                active={selected.length !== 0}
+                onClick={deselectReference}
+            >
                 {
                     selected.length === 0
                         ? <EmptySelection />
