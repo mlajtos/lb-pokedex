@@ -40,16 +40,18 @@ export default ({ data, reference }) => {
     );
 };
 
-const abbreviation = (label) => (
-    {
+const abbreviation = (() => {
+    const abbreviation = {
         "attack": "atk",
         "defense": "def",
         "special-attack": "sp-atk",
         "special-defense": "sp-def",
         "speed": "spd",
         "hp": "hp"
-    }[label]
-);
+    };
+
+    return (label) => abbreviation[label];
+})();
 
 const Entry = ({ label, value, referenceValue, unit }) => (
     <div className="Stats_entry">
