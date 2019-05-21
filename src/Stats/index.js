@@ -89,7 +89,7 @@ const RelativeValue = ({ children: value }) => {
 
     return (
         <span className={`Stats_entryRelative Stats_entryRelative__${className}`}>
-            <span>{+Math.abs(value).toFixed(1)}</span>
+            {+Math.abs(value).toFixed(1)}
         </span>
     );
 };
