@@ -2,12 +2,8 @@ import React from "react";
 
 import "./style.scss";
 
-const onKeyDown = (e) => {
-    //e.preventDefault();
-};
-
 export default ({ data, selected, ItemComponent, onSelectItem }) => (
-    <ol className="List" tabIndex="0" onKeyDown={onKeyDown}>
+    <ol className="List">
         {
             data
                 .map(
