@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import "./style.scss";
 
@@ -96,13 +96,15 @@ const RelativeValue = ({ children: value }) => {
     );
 };
 
-const Versus = ({ children: name }) => (
-    name
-        ? (
-            <div className="Stats_versus">
-                <span className="Stats_versusAcronym">vs.</span>
-                <span className="Stats_versusName">{name}</span>
-            </div>
-        )
-        : <div className="Stats_versus" />
+const Versus = memo(
+    ({ children: name }) => (
+        name
+            ? (
+                <div className="Stats_versus">
+                    <span className="Stats_versusAcronym">vs.</span>
+                    <span className="Stats_versusName">{name}</span>
+                </div>
+            )
+            : <div className="Stats_versus" />
+    )
 );
