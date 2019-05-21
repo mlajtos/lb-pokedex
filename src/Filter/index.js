@@ -15,8 +15,15 @@ export default ({ value, setValue }) => (
             className="Filter_input"
         />
         {
-            value !== ""
-                ? <img src={clearIcon} onClick={(e) => setValue("")} className="Filter_clearIcon" />
+            (value !== "")
+                ? (
+                    <img
+                        src={clearIcon}
+                        onClick={(e) => setValue("")}
+                        className="Filter_clearIcon"
+                        title="Clear"
+                    />
+                )
                 : null
         }
         
