@@ -8,7 +8,6 @@ Demo project for LB. [Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pi
 
 1. _"Click to compare stats"_ hint.
 1. Clear selection with one click.
-1. Display type of Pokémon (electric, grass, poison, etc.) as colorfull icons.
 1. Flip-over card to show extra info, e.g. description text.
 
 ## Known Bugs
