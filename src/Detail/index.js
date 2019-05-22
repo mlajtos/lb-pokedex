@@ -88,13 +88,14 @@ const Types = ({ data }) => (
     <div className="Detail_types">
         <div className="Detail_typesWrapper">
             {
-                data.map(type => (
+                data.map(({ type: { name } }) => (
                     <div
-                        className={`Detail_type Detail_type__${type.type.name}`}
-                        style={{ background: `${colorFromType(type.type.name)}` }}
-                        title={type.type.name}
+                        key={name}
+                        className={`Detail_type Detail_type__${name}`}
+                        style={{ background: `${colorFromType(name)}` }}
+                        title={name}
                     >
-                        <span className="Detail_typeName">{type.type.name}</span>
+                        <span className="Detail_typeName">{name}</span>
                     </div>
                 ))
             }
