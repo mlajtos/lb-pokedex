@@ -19,7 +19,7 @@ import { useAppState } from "./state";
 export default withRouter((props) => {
     const [
         {
-            pokemons,
+            data,
             selected,
             filter,
             reference,
@@ -61,7 +61,7 @@ export default withRouter((props) => {
 
                 <List
                     data={
-                        pokemons.filter(
+                        data.filter(
                             (pokemon) => pokemon.name.includes(filter)
                         )
                     }
@@ -72,7 +72,7 @@ export default withRouter((props) => {
 
                 <Statusbar
                     selectedCount={selected.length}
-                    totalCount={pokemons.length}
+                    totalCount={data.length}
                 />
             </NavigationPanel>
 
