@@ -2,14 +2,28 @@ import React, { useState, useCallback } from "react";
 
 import "./style.scss";
 
+/*
+    Position in rectangle:
+
+    [-100, -100]
+                *-----*
+                |     |
+                |     |
+                *-----*
+                       [100, 100]
+
+    [0, 0] is in the center.
+*/
 const getPos = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const ax = e.clientX - rect.left;
     const ay = e.clientY - rect.top;
-    const x = ((ax / rect.width) * 200) - 100;
-    const y = ((ay / rect.height) * 200) - 100;
+    const x = clamp(((ax / rect.width) * 200) - 100);
+    const y = clamp(((ay / rect.height) * 200) - 100);
     return {x, y};
 };
+
+const clamp = (value) => Math.max(Math.min(value, 100), -100);
 
 export default ({ children }) => {
     const maxRotation = 0.07;
