@@ -49,7 +49,7 @@ export default memo(({ pokemon, onRemove, onSelect, active, reference }) => {
             <AttentionSeeker>
                 <div
                     className={`Detail ${active ? "Detail__active" : ""}`}
-                    onClick={selectCallback}
+                    onClick={(e) => { e.stopPropagation(); selectCallback(); }}
                 >
                     <Types data={pokemonDetail.types} />
                     <Image

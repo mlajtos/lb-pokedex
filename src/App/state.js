@@ -22,8 +22,17 @@ const reducers = {
     }),
     selectReference: (state, [reference, referenceData]) => ({
         ...state,
-        reference,
-        referenceData
+        ...(
+            (state.reference === reference)
+                ? { // same as deselectReference
+                    reference: "",
+                    referenceData: null
+                }
+                : {
+                    reference,
+                    referenceData
+                }
+        )
     }),
     deselectReference: (state) => ({
         ...state,
