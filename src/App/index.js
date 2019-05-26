@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useReducer } from "react";
 import { withRouter } from "react-router-dom";
 
 import NavigationPanel from "../NavigationPanel";
@@ -14,13 +14,30 @@ import EmptySelection from "../EmptySelection";
 import { fetchPokemonList } from "../List/service";
 
 import "./style.scss";
+import { useAppState } from "./state";
 
 export default withRouter((props) => {
-    const [pokemons, setPokemons] = useState([]);
-    const [selected, setSelected] = useState(props.selected);
-    const [filter, setFilter] = useState("");
-    const [reference, setReference] = useState("");
-    const [referenceData, setReferenceData] = useState(null);
+    const [
+        {
+            pokemons,
+            selected,
+            filter,
+            reference,
+            referenceData
+        },
+        dispatch
+    ] = useAppState();
+
+    const setSelected = useCallback((selected) => dispatch({ "type": "setSelected", payload: selected }));
+    const setFilter = useCallback((value) => dispatch({ "type": "setFilter", payload: value }));
+    const setPokemons = useCallback((data) => dispatch({ "type": "setData", payload: data }));
+    const setReference = useCallback((pokemon) => dispatch({ "type": "setReference", payload: pokemon }));
+    const setReferenceData = useCallback((pokemonData) => dispatch({ "type": "setReferenceData", payload: pokemonData }));
+
+    useEffect(() => {
+        setSelected(props.selected);
+    }, []);
+    
 
     useEffect(() => {
         fetchPokemonList().then(setPokemons);
