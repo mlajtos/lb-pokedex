@@ -6,6 +6,12 @@ div.Stats {
         opacity: 0.8;
         height: 1em;
 
+        span.Stats_versusHint {
+            font-size: 0.6em;
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+
         span.Stats_versusAcronym {
             font-size: 0.8em;
             opacity: 0.5;
@@ -15,6 +21,15 @@ div.Stats {
         span.Stats_versusName {
             text-transform: capitalize;
             font-weight: bolder;
+        }
+    }
+
+    &:hover {
+        div.Stats_versus {
+            span.Stats_versusHint {
+                font-size: 0.6em;
+                opacity: 0.5;
+            }
         }
     }
 

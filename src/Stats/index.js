@@ -105,6 +105,8 @@ const Versus = memo(
                     <span className="Stats_versusName">{name}</span>
                 </div>
             )
-            : <div className="Stats_versus" />
+            : <div className="Stats_versus">
+                <span className="Stats_versusHint">Click to compare stats</span>
+            </div>
     )
 );
