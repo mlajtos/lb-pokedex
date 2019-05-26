@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useReducer } from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 
 import NavigationPanel from "../NavigationPanel";
@@ -25,64 +25,31 @@ export default withRouter((props) => {
             reference,
             referenceData
         },
-        dispatch
+        {
+            selectItem,
+            removeItem,
+            selectReference,
+            deselectReference,
+            setFilter,
+            setSelected,
+            setData
+        }
     ] = useAppState();
 
-    const setSelected = useCallback((selected) => dispatch({ "type": "setSelected", payload: selected }));
-    const setFilter = useCallback((value) => dispatch({ "type": "setFilter", payload: value }));
-    const setPokemons = useCallback((data) => dispatch({ "type": "setData", payload: data }));
-    const setReference = useCallback((pokemon) => dispatch({ "type": "setReference", payload: pokemon }));
-    const setReferenceData = useCallback((pokemonData) => dispatch({ "type": "setReferenceData", payload: pokemonData }));
-
     useEffect(() => {
-        setSelected(props.selected);
-    }, []);
-    
+        const fetchData = async () => {
+            const data = await fetchPokemonList();
+            setData(data);
+        };
 
-    useEffect(() => {
-        fetchPokemonList().then(setPokemons);
+        fetchData();
     }, []);
+
+    useEffect(() => setSelected(props.selected), []);
 
     useEffect(() => {
         props.history.replace(`/${selected.join("+")}`);
     }, [selected]);
-
-    const selectItem = useCallback(
-        (item) => (
-            selected.includes(item)
-                ? setSelected(selected.filter(i => i !== item))
-                : setSelected(selected.concat(item))
-        ),
-        [selected]
-    );
-
-    const removeItem = useCallback(
-        (item) => {
-            setSelected(selected.filter(i => i !== item));
-            if (reference === item) {
-                selectReference(reference);
-            }
-        },
-        [selected, reference]
-    );
-
-    const selectReference = useCallback(
-        (name, data) => {
-            if (reference === name) {
-                setReference("");
-                setReferenceData(null);
-            } else {
-                setReference(name);
-                setReferenceData(data);
-            }
-        },
-        [reference]
-    );
-
-    const deselectReference = useCallback(
-        () => selectReference(reference),
-        [selectReference]
-    );
 
     return (
         <>

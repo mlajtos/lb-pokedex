@@ -1,33 +1,46 @@
 import { useReducer } from "react";
 
-const initialState = {
-    pokemons: [],
-    selected: [],
-    filter: "",
-    reference: "",
-    referenceData: null,
-};
-
 const reducers = {
-    setFilter: (state, filter) => ({
+    init: () => ({
+        pokemons: [],
+        selected: [],
+        filter: "",
+        reference: "",
+        referenceData: null,
+    }),
+    setFilter: (state, [filter]) => ({
         ...state,
         filter
     }),
-    setData: (state, data) => ({
+    setData: (state, [data]) => ({
         ...state,
         pokemons: data
     }),
-    setReference: (state, reference) => ({
-        ...state,
-        reference
-    }),
-    setReferenceData: (state, referenceData) => ({
-        ...state,
-        referenceData
-    }),
-    setSelected: (state, selected) => ({
+    setSelected: (state, [selected]) => ({
         ...state,
         selected
+    }),
+    selectReference: (state, [reference, referenceData]) => ({
+        ...state,
+        reference,
+        referenceData
+    }),
+    deselectReference: (state) => ({
+        ...state,
+        reference: "",
+        referenceData: null
+    }),
+    selectItem: (state, [item]) => ({
+        ...state,
+        selected: (
+            state.selected.includes(item)
+                ? state.selected.filter(i => i !== item)
+                : state.selected.concat(item)
+        )
+    }),
+    removeItem: (state, [item]) => ({
+        ...state,
+        selected: state.selected.filter(i => i !== item),
     })
 };
 
@@ -44,6 +57,23 @@ const stateReducer = (state, action) => {
     }
 };
 
+const useActions = (reducers, dispatch) => {
+    const actionMap = (
+        Object.keys(reducers)
+            .map(
+                r => ({
+                    [r]: (...args) => dispatch({ type: r, payload: args })
+                })
+            )
+    );
+    const stateActions = Object.assign({}, ...actionMap);
+
+    return stateActions;
+};
+
 export const useAppState = () => {
-    return useReducer(stateReducer, initialState);
+    const [state, dispatch] = useReducer(stateReducer, undefined, reducers.init);
+    const actions = useActions(reducers, dispatch);
+
+    return [state, actions];
 };
