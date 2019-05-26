@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useMemo } from "react";
 
 const reducers = {
     init: () => ({
@@ -86,10 +86,10 @@ const useActions = (reducers, dispatch) => {
     return stateActions;
 };
 
-// actions doesn't need to be recreated every single time
 export const useAppState = () => {
     const [state, dispatch] = useReducer(stateReducer, undefined, reducers.init);
-    const actions = useActions(reducers, dispatch);
-
+    const actions = useMemo(
+        () => useActions(reducers, dispatch)
+    );
     return [state, actions];
 };
