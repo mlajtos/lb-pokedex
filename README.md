@@ -39,8 +39,6 @@ Demo project for LB. [Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pi
         - Babel could read dirname where `index.js` is located and use that. Too much work.
 1. Ton of non-optimized code.
     - Moar memo!
-1. `App.js` is getting bloated by `useState()`.
-    - `useReducer()`
 1. BEM "bug"
     - Using `Block_element__modifier` template:
         - `Block` is PascalCase to match name of the React component
