@@ -50,6 +50,14 @@ const reducers = {
     removeItem: (state, [item]) => ({
         ...state,
         selected: state.selected.filter(i => i !== item),
+        ...(
+            (state.reference === item)
+                ? { // same as deselectReference
+                    reference: "",
+                    referenceData: null
+                }
+                : {}
+        )
     })
 };
 
