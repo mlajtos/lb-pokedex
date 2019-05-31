@@ -1,8 +1,20 @@
 # Pokedex
 
-Demo project for LB. [Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pikachu+charizard+mewtwo+blastoise+charmander+bulbasaur+psyduck+cubone)
+Demo project for LB.
+
+[Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pikachu+charizard+mewtwo+blastoise+charmander+bulbasaur+psyduck+cubone) | [Source Code](https://github.com/mlajtos/lb-pokedex)
 
 [![Screenshot](demo.png)](https://mlajtos.github.io/lb-pokedex/build/#/pikachu+charizard+mewtwo+blastoise+charmander+bulbasaur+psyduck+cubone)
+
+## Requirements
+
+1. React.js app using [PokéAPI](https://pokeapi.co/​)
+    - display list of Pokémons and detail (name + image) for one selected
+1. Structured and readable code
+1. No CSS-in-JS, any pre/post processor, [BEM](https://en.bem.info/)
+1. minimal external dependencies
+
+---
 
 ## Feature Wishlist
 
@@ -34,10 +46,11 @@ Demo project for LB. [Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pi
 
 1. Ton of non-optimized code.
     - Moar memo!
-1. BEM "bug"
+1. [BEM "bug"](https://en.bem.info/methodology/naming-convention/#your-naming-system)
     - Using `Block_element__modifier` template:
         - `Block` is PascalCase to match name of the React component
         - `element` is camelCase and prefixed with one underscore
+            - PascalCase seems as a better option – when one React component leaks, `element` often becomes `Block`
         - `modifier` is camelCase and prefixed with two underscores
     - Intentionally not using this SASS scoping:
         ```sass
