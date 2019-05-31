@@ -32,11 +32,6 @@ Demo project for LB. [Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pi
 
 ### Developer-facing Bugs
 
-1. Anonymous components are crappy in DevTools.
-    - Quick fix:
-        - `export default () => {}` change to `export default function Component() {}`
-    - Proper fix:
-        - Babel could read dirname where `index.js` is located and use that. Too much work.
 1. Ton of non-optimized code.
     - Moar memo!
 1. BEM "bug"
