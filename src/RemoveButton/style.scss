@@ -1,0 +1,18 @@
+button.RemoveButton {
+    border: none;
+    background-color: #e8e8e8;
+    color: #656565;
+    padding: 0.2em;
+    width: 3em;
+    height: 3em;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+    z-index: 100;
+
+    &:hover {
+        background: #e53935;
+        color: white;
+    }
+}

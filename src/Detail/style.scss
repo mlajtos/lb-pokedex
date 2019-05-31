@@ -42,65 +42,8 @@ img.Detail_image {
     align-self: center;
 }
 
-button.Detail_removeButton {
-    border: none;
-    background-color: #e8e8e8;
-    color: #656565;
-    padding: 0.2em;
-    outline: none;
-    border-radius: 50%;
-    cursor: pointer;
+.Detail_removeButton {
     position: absolute;
-    width: 3em;
-    height: 3em;
     right: 0.7em;
     top: 0.7em;
-    background: transparent;
-    z-index: 100;
-
-    &:hover {
-        background: #e53935;
-        color: white;
-    }
-}
-
-div.Detail_types {
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: 0;
-    left: 0;
-    transform: rotate(-45deg) translate(-5em, 1em);
-    z-index: 1;
-    
-    div.Detail_typesWrapper {
-        display: flex;
-        flex-direction: column;
-        width: 10em;
-        opacity: 0.3;
-        transition: opacity 0.1s ease-in-out;
-        min-height: 5em;
-
-        &:hover {
-            opacity: 1;
-
-            div.Detail_type span.Detail_typeName {
-                opacity: 0.9;
-            }
-        }
-    
-        div.Detail_type {
-            flex: 0 0 1em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            span.Detail_typeName {
-                font-size: 0.6em;
-                opacity: 0;
-                color: white;
-                text-shadow: 0 0 3px #00000059;
-            }
-        }
-    }
 }

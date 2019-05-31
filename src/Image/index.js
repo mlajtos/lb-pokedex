@@ -4,7 +4,7 @@ import Pokeball from "../Pokeball";
 
 import "./style.scss";
 
-export default (props) => {
+const Image = (props) => {
     const [loaded, setLoaded] = useState(false);
     const onLoad = useCallback(() => setLoaded(true));
 
@@ -23,3 +23,5 @@ export default (props) => {
         </div>
     );
 };
+
+export default Image;

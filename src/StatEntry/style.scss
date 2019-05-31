@@ -1,0 +1,56 @@
+div.StatEntry {
+    text-align: center;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    div.StatEntry_label {
+        font-size: 0.9em;
+        font-variant: all-small-caps;
+        letter-spacing: -0.05em;
+        border-top: 1px solid #e2e2e2;
+        color: #7d7d7d;
+    }
+
+    span.StatEntry_relativeValue ~ span.StatEntry_absoluteValue {
+        display: none;
+    }
+
+    &:hover {
+        overflow: visible;
+
+        span.StatEntry_absoluteValue {
+            display: inline !important;
+        }
+
+        span.StatEntry_relativeValue {
+            display: none;
+        }
+    }
+
+    span.StatEntry_relativeValue__positive {
+        color: #4caf50;
+        &::before {
+            content: "+";
+        }
+    }
+    
+    span.StatEntry_relativeValue__negative {
+        color: #f44336;
+        &::before {
+            content: "-";
+        }
+    }
+
+    span.StatEntry_relativeValue__neutral {
+        color: "black";
+        &::before {
+            content: "±";
+        }
+    }
+
+    span.StatEntry_unit {
+        opacity: 0.5;
+        margin-left: 0.05em;
+    }
+}

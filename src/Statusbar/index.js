@@ -2,7 +2,7 @@ import React from "react";
 
 import "./style.scss";
 
-export default ({ selectedCount, totalCount }) => (
+const Statusbar = ({ selectedCount, totalCount }) => (
     <div className="Statusbar">
         {
             selectedCount !== 0
@@ -12,3 +12,5 @@ export default ({ selectedCount, totalCount }) => (
         <span className="Statusbar_totalCount">{totalCount} Total</span>
     </div>
 );
+
+export default Statusbar;

@@ -2,7 +2,7 @@ import React from "react";
 
 import "./style.scss";
 
-export default ({ active, onClick, children }) => (
+const DetailPanel = ({ active, onClick, children }) => (
     <div
         className={`DetailPanel ${active ? "DetailPanel__active" : ""}`}
         onClick={onClick}
@@ -10,3 +10,5 @@ export default ({ active, onClick, children }) => (
         {children}
     </div>
 );
+
+export default DetailPanel;

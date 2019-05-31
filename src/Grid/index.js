@@ -2,8 +2,10 @@ import React from "react";
 
 import "./style.scss";
 
-export default ({ children }) => (
+ const Grid = ({ children }) => (
     <div className="Grid">
         {children}
     </div>
 );
+
+export default Grid;

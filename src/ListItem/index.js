@@ -2,7 +2,7 @@ import React from "react";
 
 import "./style.scss";
 
-export default ({ pokemon, selected, onSelect }) => (
+const ListItem = ({ pokemon, selected, onSelect }) => (
     <li className={"ListItem " + (selected ? "ListItem__selected" : "")}>
         <a
             className={"ListItem_link"}
@@ -18,3 +18,5 @@ export default ({ pokemon, selected, onSelect }) => (
         </a>
     </li>
 );
+
+export default ListItem;

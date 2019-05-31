@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default function AttentionSeeker({ children }) {
+const AttentionSeeker = ({ children }) => {
     const el = useRef();
     const [didScroll, setDidScroll] = useState(false);
 
@@ -17,3 +17,5 @@ export default function AttentionSeeker({ children }) {
         </div>
     );
 };
+
+export default AttentionSeeker;

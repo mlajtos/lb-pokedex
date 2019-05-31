@@ -2,7 +2,7 @@ import React from "react";
 
 import "./style.scss";
 
-export default ({ data, selected, ItemComponent, onSelectItem }) => (
+const List = ({ data, selected, ItemComponent, onSelectItem }) => (
     <ol className="List">
         {
             data
@@ -19,3 +19,5 @@ export default ({ data, selected, ItemComponent, onSelectItem }) => (
         }
     </ol>
 );
+
+export default List;

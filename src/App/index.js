@@ -16,7 +16,7 @@ import { fetchPokemonList } from "../List/service";
 import "./style.scss";
 import { useAppState } from "./state";
 
-export default withRouter((props) => {
+const App = (props) => {
     const [
         {
             data,
@@ -105,4 +105,6 @@ export default withRouter((props) => {
             </DetailPanel>
         </>
     );
-});
+};
+
+export default withRouter(App);

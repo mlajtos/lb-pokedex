@@ -1,31 +1,9 @@
 import React, { useState, useCallback } from "react";
 
+import { getPositionInRectangle } from "./utils";
 import "./style.scss";
 
-/*
-    Position in rectangle:
-
-    [-100, -100]
-                *-----*
-                |     |
-                |     |
-                *-----*
-                       [100, 100]
-
-    [0, 0] is in the center.
-*/
-const getPos = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const ax = e.clientX - rect.left;
-    const ay = e.clientY - rect.top;
-    const x = clamp(((ax / rect.width) * 200) - 100);
-    const y = clamp(((ay / rect.height) * 200) - 100);
-    return {x, y};
-};
-
-const clamp = (value) => Math.max(Math.min(value, 100), -100);
-
-export default ({ children }) => {
+const Tilt = ({ children }) => {
     const maxRotation = 0.07;
     const maxScale = 1.07;
     const maxShadowDisplacement = 0.1;
@@ -41,7 +19,7 @@ export default ({ children }) => {
 
     const onMouseEnter = useCallback(
         (e) => {
-            setPos(getPos(e));
+            setPos(getPositionInRectangle(e));
             setTimeout(() => {
                 setTransitionTime(0);
             }, transitionTime);
@@ -52,7 +30,7 @@ export default ({ children }) => {
     const onMouseMove = useCallback(
         (e) => {
             if (!transitionTime) {
-                setPos(getPos(e));
+                setPos(getPositionInRectangle(e));
             }
         },
         [transitionTime]
@@ -118,3 +96,5 @@ export default ({ children }) => {
         </div>
     );
 };
+
+export default Tilt;

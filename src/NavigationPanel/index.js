@@ -2,8 +2,10 @@ import React from "react";
 
 import "./style.scss";
 
-export default ({ children }) => (
+const NavigationPanel = ({ children }) => (
     <div className="NavigationPanel">
         {children}
     </div>
 );
+
+export default NavigationPanel;
