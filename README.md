@@ -1,6 +1,6 @@
 # Pokedex
 
-Demo project for LB.
+Demo project for [LB*](https://lbstudio.sk/).
 
 [Live demo](https://mlajtos.github.io/lb-pokedex/build/#/pikachu+charizard+mewtwo+blastoise+charmander+bulbasaur+psyduck+cubone) | [Source Code](https://github.com/mlajtos/lb-pokedex)
 
